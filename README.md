@@ -1,3 +1,6 @@
+## Overview
+dbotV2 is a core component of the new canto dusting infrastructure. This bot dusts canto to new users who have bridged assets into canto via [gravity bridge](https://github.com/Gravity-Bridge/Gravity-Bridge). 
+
 ## Installation
 `yarn install`
 
@@ -13,3 +16,4 @@
 
 ## TODO
 - change everything to typescript. JS is pain and I only made this because I had similar code from years ago...
+- add multi-send contract to this repo
