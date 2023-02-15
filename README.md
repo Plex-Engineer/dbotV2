@@ -17,3 +17,4 @@ dbotV2 is a core component of the new canto dusting infrastructure. This bot dus
 ## TODO
 - change everything to typescript. JS is pain and I only made this because I had similar code from years ago...
 - add multi-send contract to this repo
+- clean up structure of code; current version is just mvp
