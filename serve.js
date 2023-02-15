@@ -2,10 +2,11 @@ import { createClient } from "@supabase/supabase-js";
 import axios from "axios";
 import * as dotenv from "dotenv";
 import { ethers } from "ethers";
+import { SUPABASE_KEY, SUPABASE_URL, BRIDGE_INFO, ETH_PRIVATE_KEY, RPC_URL } from "./constants.js"
 
 dotenv.config();
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseUrl = SUPABASE_URL;
+const supabaseKey = SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const { data, error } = await supabase
@@ -28,7 +29,7 @@ for (let i = 0; i < data.length; i++) {
 }
 
 // get all bridge TX from gravity chain endpoint
-axios.get(process.env.BRIDGE_INFO).then(async function (response) {
+axios.get(BRIDGE_INFO).then(async function (response) {
 	// console.log(response.data);
 	for (let i = 0; i < response.data.deposit_events.length; i++) {
 		if (address_tracker[response.data.deposit_events[i].sender] == true) {
@@ -52,9 +53,6 @@ axios.get(process.env.BRIDGE_INFO).then(async function (response) {
 						sender_addr
 				);
 				let accountNumData = await accountNum.json();
-				console.log(accountNumData);
-                console.log(sender_addr);
-                console.log(balanceData.balance.amount.length);
 				// conditions users must meet to get dusted
 				if (
 					balanceData.balance.amount.length < 19 &&
@@ -84,10 +82,10 @@ axios.get(process.env.BRIDGE_INFO).then(async function (response) {
 		let amt_str = amt.toString();
 		// dust canto here
 		const provider = new ethers.providers.JsonRpcProvider(
-			process.env.RPC_URL,
+			RPC_URL,
 			7700
 		);
-		const signer = new ethers.Wallet(process.env.ETH_PRIVATE_KEY, provider);
+		const signer = new ethers.Wallet(ETH_PRIVATE_KEY, provider);
 		const multisendContract = new ethers.Contract(
 			"0x2904c0bb3B2bCFF3cEcCa23008E386aA1ffC707c",
 			abi,
