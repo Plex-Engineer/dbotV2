@@ -1,5 +1,5 @@
 ## Overview
-dbotV2 is a core component of the new canto dusting infrastructure. This bot dusts canto to new users who have bridged assets into canto via [gravity bridge](https://github.com/Gravity-Bridge/Gravity-Bridge). 
+dbotV2 is a core component of canto dusting infrastructure. This bot dusts canto to new users who have bridged assets into canto via [gravity bridge](https://github.com/Gravity-Bridge/Gravity-Bridge). 
 
 ## Installation
 `yarn install`
